@@ -10,13 +10,13 @@ function h($value)
 {
   return htmlspecialchars($value);
 }
- function error_404($value='')
+ function error_404()
 {
   header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found ");
 exit();
 }
 
- function error_500($value='')
+ function error_500()
 {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found ");
   exit();}
