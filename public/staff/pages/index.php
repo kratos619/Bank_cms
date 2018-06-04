@@ -26,7 +26,7 @@ require(SHARED_PATH .'/staff-header.php');
   </div>
 
     <div class="">
-      <a class="btn btn-primary btn-lg m-3" href="">Create New Page</a>
+      <a class="btn btn-primary btn-lg m-3" href="<?php echo url_for('/staff/pages/new.php');?> ">Create New Page</a>
     </div>
 
   	<table class="table table-striped">
@@ -50,7 +50,7 @@ require(SHARED_PATH .'/staff-header.php');
           <td><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
     	    <td><?php echo h($page['menu_name']); ?></td>
           <td><a class="action" href="<?php echo url_for('staff/pages/show.php?id='. h($page['id']) ); ?>">View</a></td>
-          <td><a class="action" href="">Edit</a></td>
+          <td><a class="action" href="<?php echo url_for('staff/pages/edit.php?id='. h($page['id']) ); ?>">Edit</a></td>
           <td><a class="action" href="">Delete</a></td>
     	  </tr>
       <?php } ?>
