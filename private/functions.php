@@ -13,10 +13,11 @@ function h($value)
  function error_404($value='')
 {
   header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found ");
+exit();
 }
 
  function error_500($value='')
 {
-  # code...
-}
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found ");
+  exit();}
 ?>
