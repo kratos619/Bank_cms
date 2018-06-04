@@ -20,4 +20,8 @@ exit();
 {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found ");
   exit();}
+function redirect_to($location){
+header("Location: ". $location);
+exit;
+}
 ?>
