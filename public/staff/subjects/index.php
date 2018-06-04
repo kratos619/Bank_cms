@@ -26,7 +26,7 @@ require(SHARED_PATH .'/staff-header.php');
   </div>
 
     <div class="">
-      <a class="btn btn-primary btn-lg m-3" href="">Create New Subject</a>
+      <a class="btn btn-primary btn-lg m-3" href="<?php echo url_for('/staff/subjects/new.php'); ?>">Create New Subject</a>
     </div>
 
   	<table class="table table-striped">
@@ -50,7 +50,7 @@ require(SHARED_PATH .'/staff-header.php');
           <td><?php echo $subject['visible'] == 1 ? 'true' : 'false'; ?></td>
     	    <td><?php echo h($subject['menu_name']); ?></td>
           <td><a class="action" href="<?php echo url_for('staff/subjects/show.php?id='. htmlspecialchars($subject['id']) ); ?>">View</a></td>
-          <td><a class="action" href="">Edit</a></td>
+          <td><a class="action" href="<?php echo url_for('staff/subjects/edit.php?id='. htmlspecialchars($subject['id']) ); ?>">Edit</a></td>
           <td><a class="action" href="">Delete</a></td>
     	  </tr>
       <?php } ?>
