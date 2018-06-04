@@ -49,7 +49,7 @@ require(SHARED_PATH .'/staff-header.php');
           <td><?php echo h($subject['position']) ; ?></td>
           <td><?php echo $subject['visible'] == 1 ? 'true' : 'false'; ?></td>
     	    <td><?php echo h($subject['menu_name']); ?></td>
-          <td><a class="action" href="<?php echo url_for('staff/subjects/show.php?id='. htmlspecialchars($subject['id']) ); ?>">View</a></td>
+          <td><a class="action" href="<?php echo url_for('staff/subjects/show.php?id='. htmlspecialchars(urlencode($subject['id']))); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('staff/subjects/edit.php?id='. htmlspecialchars($subject['id']) ); ?>">Edit</a></td>
           <td><a class="action" href="">Delete</a></td>
     	  </tr>
