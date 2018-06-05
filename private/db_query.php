@@ -9,7 +9,9 @@ function find_all_subjects(){
    global $db;
     $sql = "select * from subjetcs ";
     $sql .= "order by position asc";
+  //  echo $sql;
     $result  = mysqli_query($db , $sql);
+    confirm_result_set($result);
 return $result;
 }
 
