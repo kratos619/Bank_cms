@@ -15,4 +15,16 @@ function find_all_subjects(){
 return $result;
 }
 
+function find_all_pages(){
+    global $db;
+    $sql = "select * from pages ";
+    $sql .= "order by position asc";
+    echo  $sql;
+    $result = mysqli_query($db,$sql);
+    confirm_result_set($result);
+    return $result;
+
+}
+
+
 ?>
