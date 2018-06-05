@@ -23,13 +23,19 @@ require(SHARED_PATH .'/staff-header.php');
 
     <?php
     $selected_id = $_GET['id'] ?? '1';
+$subject = find_all_subjects_by_id($selected_id);
 
-    echo htmlspecialchars($selected_id) ;
      ?>
-
   </div>
 </div>
 
+<div class="container">
+    <div class="row">
+
+            <h4><?php echo $subject['id']  ?></h4>
+            <h4><?php echo $subject['menu_name']  ?></h4>
+    </div>
+</div>
 
 <?php
 include(SHARED_PATH .'/staff-footer.php');
