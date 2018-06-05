@@ -58,7 +58,7 @@ error_404();
       <input type="checkbox" name="visible" value="1" class="form-check-input" >
           <label class="form-check-label" for="exampleCheck1">Visible</label>
         </div>
-      <input type="submit" value="Create Subject" class="btn btn-primary" />
+      <input type="submit" value="Create Page" class="btn btn-primary" />
     </form>
   </div>
   </div>
