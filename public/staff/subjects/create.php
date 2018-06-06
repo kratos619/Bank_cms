@@ -18,7 +18,7 @@ if(request_is_post()){
     $sql .= "'".$visible."',";
     $sql .= "'".$position."'";
     $sql .= ")";
-echo $sql;
+
     $result = mysqli_query($db , $sql);
     if($result){
         $new_id = mysqli_insert_id($db);
