@@ -51,7 +51,7 @@ if(request_is_post()){
     $sql .= "visible='" . $subject['visible'] . "' ";
     $sql .= "where id='" . $selected_id . "' ";
     $sql .= "limit 1";
-    echo  $sql;
+   // echo  $sql;
 $result = mysqli_query($db,$sql);
 if($result){
 redirect_to(url_for('/staff/subjects/index.php'));
