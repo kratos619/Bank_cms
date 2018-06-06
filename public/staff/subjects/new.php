@@ -36,7 +36,7 @@ error_404();
  </div>
 <div class="container">
   <div class="row">
-<div class="col-md-6 ">
+<div class="col-md-6 offset-md-3">
   <div style="" class="card form-shadow ">
   <div style="margin:10px;" class="card-body">
     <div class="card-header">

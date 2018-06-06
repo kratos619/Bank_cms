@@ -31,9 +31,16 @@ $subject = find_all_subjects_by_id($selected_id);
 
 <div class="container">
     <div class="row">
+<div class="col-md-8">
+    <h4 class=""><span>ID: </span><?php echo $subject['id'];  ?></h4>
+    <h4><span>Menu Name: </span><?php echo $subject['menu_name'];  ?></h4>
+    <h4><span>Position: </span><?php echo $subject['position'];  ?></h4>
+    <h4><span>Visible: </span><?php echo $subject['visible'];  ?></h4>
+</div>
+        <div class="col-md-4">
 
-            <h4><?php echo $subject['id']  ?></h4>
-            <h4><?php echo $subject['menu_name']  ?></h4>
+        </div>
+
     </div>
 </div>
 
