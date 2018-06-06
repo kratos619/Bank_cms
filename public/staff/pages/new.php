@@ -42,17 +42,30 @@ error_404();
     <div class="card-header">
        <?php echo $page_title; ?>
      </div>
-    <form>
+    <form action="create.php" method="post">
       <div class="form-group">
         <label for="">Menu Name</label>
         <input type="text" name="menu_name" class="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Enter Menu Name">
       </div>
       <div class="form-group">
-    <label for="exampleFormControlSelect1">Select Position</label>
+    <label>Select Position</label>
     <select name="position" class="form-control" id="exampleFormControlSelect1">
       <option value="1">1</option>
     </select>
+
   </div>
+        <div class="form-group">
+            <label>Select Subject Id</label>
+            <select name="subject_id" class="form-control" id="exampleFormControlSelect1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Add Content</label>
+            <textarea  name="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+        </div>
         <div style="margin-left:20px;" class="form-check">
           <input type="hidden" name="visible" value="0" class="form-check-input">
       <input type="checkbox" name="visible" value="1" class="form-check-input" >

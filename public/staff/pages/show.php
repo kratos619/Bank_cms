@@ -21,7 +21,7 @@ require(SHARED_PATH .'/staff-header.php');
 </nav>
 
     <?php
-    $selected_id = $_GET['id'] ?? '1';
+    $selected_id = $_GET['id'] ;
     echo htmlspecialchars($selected_id) ;
      ?>
 

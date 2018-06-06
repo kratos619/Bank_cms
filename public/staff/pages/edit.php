@@ -43,7 +43,7 @@ if (!isset($_GET['id'])) {
     </div>
     <div class="form-group">
   <label for="exampleFormControlSelect1">Select Position</label>
-  <select name="position" class="form-control" id="exampleFormControlSelect1">
+  <select name="position" class="form-control">
     <option value="1">1</option>
   </select>
 </div>
