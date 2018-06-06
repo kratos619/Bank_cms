@@ -12,6 +12,7 @@ $dbpass = 'password';
 $dbname = 'dbname';
 
 1. Create a database connection
+
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 Test if connection succeeded
