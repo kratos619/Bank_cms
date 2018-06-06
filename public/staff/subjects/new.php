@@ -42,7 +42,7 @@ error_404();
     <div class="card-header">
        <?php echo $page_title; ?>
      </div>
-    <form>
+    <form method="post" action="create.php">
       <div class="form-group">
         <label for="">Menu Name</label>
         <input type="text" name="menu_name" class="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Enter Menu Name">
@@ -58,7 +58,7 @@ error_404();
       <input type="checkbox" name="visible" value="1" class="form-check-input" >
           <label class="form-check-label" for="exampleCheck1">Visible</label>
         </div>
-      <input type="submit" value="Create Subject" class="btn btn-primary" />
+      <input type="submit" value="Create Subject" name="" class="btn btn-primary" />
     </form>
   </div>
   </div>
