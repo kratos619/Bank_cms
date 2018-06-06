@@ -30,12 +30,23 @@ function find_all_pages(){
     global $db;
     $sql = "select * from pages ";
     $sql .= "order by position asc";
-    echo  $sql;
+   // echo  $sql;
     $result = mysqli_query($db,$sql);
     confirm_result_set($result);
     return $result;
 
 }
 
+
+function find_pages_by_id($id){
+    global $db;
+    $sql = "SELECT * FROM pages ";
+    $sql .= "where id= '". $id . "' ";
+    $result = mysqli_query($db,$sql);
+    confirm_result_set($result);
+    $pages = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $pages;
+}
 
 ?>
