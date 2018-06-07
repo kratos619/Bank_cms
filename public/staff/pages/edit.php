@@ -42,7 +42,7 @@ if (!isset($_GET['id'])) {
 
     if(request_is_post()){
       $page = [];
-      $selected_id['id'] = $_POST['id'];
+//      $selected_id['id'] = $_POST['id'];
         $selected_menu['menu_name']= $_POST['menu_name'];
         $selected_subject_id['subject_id']= $_POST['subject_id'];
         $selected_position['position']= $_POST['position'];
@@ -53,9 +53,9 @@ $selected_content ['content'] = $_POST['content'];
         $sql .= "subject_id='" . $selected_subject_id['subject_id'] . "', ";
         $sql .= "menu_name='" . $selected_menu['menu_name'] . "', ";
         $sql .= "position='" .  $selected_position['position']. "', ";
-        $sql .= "visible='" . $selected_visibility['visible'] . "' ";
+        $sql .= "visible='" . $selected_visibility['visible'] . "' ,";
         $sql .= "content='" . $selected_content['content'] . "' ";
-        $sql .= "where id='" . $selected_id . "' ";
+        $sql .= " where id='" . $selected_id . "' ";
         $sql .= "limit 1";
 
         $result = mysqli_query($db , $sql);
