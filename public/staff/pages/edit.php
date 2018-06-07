@@ -48,6 +48,7 @@ if (!isset($_GET['id'])) {
 
 
         $sql = "update pages set ";
+        $sql .= "subject_id='" . $selected_subject_id['subject_id'] . "', ";
         $sql .= "menu_name='" . $selected_menu['menu_name'] . "', ";
         $sql .= "position='" .  $selected_position['position']. "', ";
         $sql .= "visible='" . $selected_visibility['visible'] . "' ";

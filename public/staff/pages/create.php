@@ -9,19 +9,21 @@
 <?php
 require_once ('../../../private/initialize.php');
 if(request_is_post()){
-$subject_id = $_POST['subject_id'];
-    $menu_name = $_POST['menu_name'] ;
-    $position= $_POST['position'];
-    $visible = $_POST['visible'] ;
-    $content = $_POST['content'] ;
+    $page = [];
+$subject_id['subject_id'] = $_POST['subject_id'];
+    $menu_name['menu_name'] = $_POST['menu_name'] ;
+    $position['position']= $_POST['position'];
+    $visible['visible'] = $_POST['visible'] ;
+    $content['content'] = $_POST['content'] ;
 
     $sql = "insert into pages ";
-    $sql .= "(menu_name,position ,visible, content) ";
+    $sql .= "(subject_id,menu_name,position ,visible, content) ";
     $sql .= "values (";
-    $sql .= "'".h($menu_name)."',";
-    $sql .= "'".h($position )."',";
-    $sql .= "'".h($visible)."',";
-    $sql .= "'".h($content)."'";
+    $sql .= "'".h($subject_id['subject_id'])."',";
+    $sql .= "'".h($menu_name['menu_name'])."',";
+    $sql .= "'".h($position['position'] )."',";
+    $sql .= "'".h($visible['visible'])."',";
+    $sql .= "'".h($content['content'])."'";
     $sql .= ")";
     echo $sql;
     $result = mysqli_query($db , $sql);
@@ -35,4 +37,5 @@ $subject_id = $_POST['subject_id'];
         exit;
     }
 }
+
 ?>

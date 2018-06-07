@@ -22,10 +22,30 @@ require(SHARED_PATH .'/staff-header.php');
 
     <?php
     $selected_id = $_GET['id'] ;
-    echo htmlspecialchars($selected_id) ;
-     ?>
+  $show_page_content =  find_pages_by_id($selected_id);
 
+  ?>
   </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p>Page Id: <?php echo h($show_page_content['id'] ); ?></p>
+            <p>Page Subject Id : <?php echo h($show_page_content['subject_id'] );?></p>
+            <p>Page Menu Name : <?php echo h($show_page_content['menu_name'] );?></p>
+            <p>Page Position : <?php echo h($show_page_content['position'] );?></p>
+            <p>Page Visibility :<?php echo  h($show_page_content['visible'] );?></p>
+            <p>Page Content: <?php echo h($show_page_content['content']); ?></p>
+        </div>
+        <div class="col-md-6">
+            <form action="">
+                <div class="align-items-center" >
+                    <input type="submit" class="btn-danger btn btn-group-lg" value="Delete" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 

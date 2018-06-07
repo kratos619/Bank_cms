@@ -49,4 +49,22 @@ function find_pages_by_id($id){
     return $pages;
 }
 
+function delete_pages($selected_id){
+    global $db;
+    $sql = "delete from pages ";
+    $sql.= "where id= '". $selected_id . "'";
+    $sql.= "limit 1";
+
+    $result = mysqli_query($db,$sql);
+
+    if($result){
+        return true;
+
+    }else{
+        echo mysqli_errno($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
 ?>
