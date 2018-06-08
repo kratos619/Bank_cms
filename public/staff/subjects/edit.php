@@ -45,7 +45,17 @@ if(request_is_post()){
     $subject['position'] = $_POST['position'] ?? '';
     $subject['visible'] = $_POST['visible'] ?? '';
 
-$result = update_subjects($selected_id);
+    $sql = "update subjetcs set ";
+    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
+    $sql .= "position='" . $subject['position'] . "', ";
+    $sql .= "visible='" . $subject['visible'] . "' ";
+    $sql .= "where id='" . $selected_id . "' ";
+    $sql .= "limit 1";
+   // echo  $sql;
+$result = mysqli_query($db,$sql);
+if($result){
+redirect_to(url_for('/staff/subjects/index.php'));
+
 }else{
     //if update fail
 echo mysqli_errno($db);
