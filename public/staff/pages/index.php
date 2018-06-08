@@ -29,6 +29,7 @@ $page_set = find_all_pages();
       <tr class="bg-primary">
         <th>ID</th>
         <th>Position</th>
+        <th>Subject</th>
         <th>Visible</th>
   	    <th>Name</th>
   	    <th>&nbsp;</th>
@@ -42,11 +43,16 @@ $page_set = find_all_pages();
         <tr>
           <td><?php echo h($page['id']) ; ?></td>
           <td><?php echo h($page['position']); ?></td>
+            <?php
+            //$subject = '';
+            $subject = find_all_subjects_by_id($page['subject_id']);
+            ?>
+          <td><?php echo h($subject['menu_name']); ?></td>
           <td><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
     	    <td><?php echo h($page['menu_name']); ?></td>
           <td><a class="action" href="<?php echo url_for('staff/pages/show.php?id='. h($page['id']) ); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('staff/pages/edit.php?id='. h($page['id']) ); ?>">Edit</a></td>
-          <td><a class="action" href="">Delete</a></td>
+          <td><a class="action" href="<?php echo url_for('staff/pages/show.php?id='. h($page['id']) ); ?>">Delete</a></td>
     	  </tr>
       <?php } ?>
   	</table>
