@@ -1,14 +1,5 @@
 <?php
 require_once('../../../private/initialize.php');
-$test = $_GET['test'] ?? '';
-if($test == '404'){
-error_404();
-}elseif ($test == '500') {
-  error_500();
-}elseif ($test == 'redirect') {
-  redirect_to(url_for('/staff/subjects/index.php'));
-}
-
  ?>
  <?php
  require_once('../../../private/initialize.php');
@@ -51,12 +42,14 @@ error_404();
     <label for="exampleFormControlSelect1">Select Position</label>
     <select name="position" class="form-control" id="exampleFormControlSelect1">
       <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
     </select>
   </div>
         <div style="margin-left:20px;" class="form-check">
           <input type="hidden" name="visible" value="0" class="form-check-input">
       <input type="checkbox" name="visible" value="1" class="form-check-input" >
-          <label class="form-check-label" for="exampleCheck1">Visible</label>
+          <label class="form-check-label" >Visible</label>
         </div>
       <input type="submit" value="Create Subject" name="" class="btn btn-primary" />
     </form>

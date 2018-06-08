@@ -7,19 +7,12 @@ require_once ('../../../private/initialize.php');
  * Time: 08:30
  */
 if(request_is_post()){
-    $menu_name = $_POST['menu_name'] ?? '';
-    $visible = $_POST['visible'] ?? '';
-    $position= $_POST['position'] ?? '';
+    $menu_name = $_POST['menu_name'];
+    $visible = $_POST['visible'];
+    $position= $_POST['position'];
 
-    $sql = "insert into subjetcs ";
-    $sql .= "(menu_name,position ,visible) ";
-    $sql .= "values (";
-    $sql .= "'".$menu_name."',";
-    $sql .= "'".$visible."',";
-    $sql .= "'".$position."'";
-    $sql .= ")";
-
-    $result = mysqli_query($db , $sql);
+    $result = insert_subjects($menu_name,$visible,$position);
+//    $result = mysqli_query($db , $sql);
     if($result){
         $new_id = mysqli_insert_id($db);
         redirect_to(url_for('/staff/subjects/show.php?id='.$new_id));
