@@ -102,11 +102,33 @@ $selected_content ['content'] = $_POST['content'];
 
         </div>
         <div class="form-group">
+            <?php
+
+            //$subject = '';
+            $subject = find_all_subjects_by_id($selected_id);
+            ?>
+
             <label>Select Subject Id</label>
             <select name="subject_id" class="form-control" >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option value="<?php echo h($page['subject_id']); ?>">selected : <?php echo h($subject['menu_name']); ?></option>
+                <?php
+                $subject_set = find_all_subjects();
+                $page_set = find_all_pages();
+                while ($subject = mysqli_fetch_assoc($subject_set)){
+                ?>
+                    <?php
+                    while ($page = mysqli_fetch_assoc($page_set)){
+                        ?>
+                        <option value="<?php echo h($page['subject_id']); ?>"><?php echo h($subject['menu_name']); ?></option>
+                        <?php
+                    }
+
+                    ?>
+
+                <?php
+                }
+                ?>
+
             </select>
         </div>
         <div class="form-group">

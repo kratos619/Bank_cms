@@ -117,6 +117,7 @@ mysqli_free_result($page_set);
                     ><?php echo h($subject_menu) ;?></option>
                 <?php
                 }
+                mysqli_free_result($subject_set);
                 ?>
             </select>
         </div>
