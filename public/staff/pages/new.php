@@ -98,11 +98,26 @@ mysqli_free_result($page_set);
 
   </div>
         <div class="form-group">
-            <label>Select Subject Id</label>
+            <?php
+            $subject_set= find_all_subjects();
+            ?>
+            <label>Select Subject </label>
             <select name="subject_id" class="form-control" id="exampleFormControlSelect1">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <?php
+                while ($subject = mysqli_fetch_assoc($subject_set)){
+                    $subject_menu = $subject['menu_name'];
+                    $old_subject_id = $subject['id']
+                ?>
+                    <option value="<?php echo h($old_subject_id) ;?>"
+                        <?php
+                        if($page['subject_id'] == $old_subject_id){
+                            echo  "selected";
+                        }
+                        ?>
+                    ><?php echo h($subject_menu) ;?></option>
+                <?php
+                }
+                ?>
             </select>
         </div>
         <div class="form-group">
