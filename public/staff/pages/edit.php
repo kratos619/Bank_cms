@@ -119,6 +119,7 @@ $selected_content ['content'] = $_POST['content'];
                     <option value="<?php echo h($page['subject_id']); ?>"><?php echo h($subject['menu_name']); ?></option>
                 <?php
                 }
+                mysqli_free_result($subject_set);
                 ?>
 
             </select>
