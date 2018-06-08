@@ -110,21 +110,13 @@ $selected_content ['content'] = $_POST['content'];
 
             <label>Select Subject Id</label>
             <select name="subject_id" class="form-control" >
-                <option value="<?php echo h($page['subject_id']); ?>">selected : <?php echo h($subject['menu_name']); ?></option>
                 <?php
                 $subject_set = find_all_subjects();
-                $page_set = find_all_pages();
+//                $page_set = find_all_pages();
                 while ($subject = mysqli_fetch_assoc($subject_set)){
+                    $page['subject_id'] = $subject['id'];
                 ?>
-                    <?php
-                    while ($page = mysqli_fetch_assoc($page_set)){
-                        ?>
-                        <option value="<?php echo h($page['subject_id']); ?>"><?php echo h($subject['menu_name']); ?></option>
-                        <?php
-                    }
-
-                    ?>
-
+                    <option value="<?php echo h($page['subject_id']); ?>"><?php echo h($subject['menu_name']); ?></option>
                 <?php
                 }
                 ?>
