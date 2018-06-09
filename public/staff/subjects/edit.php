@@ -52,8 +52,9 @@ $result = update_subjects($subject);
 if ($result === true ){
     redirect_to(url_for('/staff/subjects/index.php'));
 }else{
+
     $errors = $result;
-    echo var_dump($errors);
+   // echo $errors['menu_name'];
 }
 
 }else{
@@ -63,6 +64,11 @@ if ($result === true ){
     mysqli_free_result($subject_sets);
 }
 ?>
+    <div class="alert-danger">
+        <?php
+        echo display_errors($errors);
+        ?>
+    </div>
   <form action="<?php echo url_for('/staff/subjects/edit.php?id='. h($selected_id)); ?>" method="post">
     <div class="form-group">
       <label for="">Menu Name</label>
@@ -96,6 +102,7 @@ if ($result === true ){
       </div>
     <input type="submit" value="Edit Subject" class="btn btn-primary" />
   </form>
+    <div  ></div>
 </div>
 </div>
 

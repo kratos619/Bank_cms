@@ -18,10 +18,11 @@ define("SHARED_PATH", PRIVATE_PATH . '/shared');
 $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
 $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
 define("WWW_ROOT", $doc_root);
-
+$errors = [];
 require_once('functions.php');
 require_once ('database.php');
 require_once ('db_query.php');
 include ('validation_functions.php');
+
 $db = db_connect();
 ?>
