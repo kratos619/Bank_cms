@@ -8,11 +8,11 @@ require_once ('../../../private/initialize.php');
  */
 if(request_is_post()){
     $subject = [];
-    $menu_name = $_POST['menu_name'];
-    $visible = $_POST['visible'];
-    $position= $_POST['position'];
+    $subject['menu_name'] = $_POST['menu_name'];
+    $subject['visible'] = $_POST['visible'];
+    $subject['position'] = $_POST['position'];
 
-    $result = insert_subjects($menu_name,$visible,$position);
+    $result = insert_subjects($subject);
 //    $result = mysqli_query($db , $sql);
     if($result){
         $new_id = mysqli_insert_id($db);

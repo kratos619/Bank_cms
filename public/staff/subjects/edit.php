@@ -47,14 +47,14 @@ if(request_is_post()){
     $subject['position'] = $_POST['position'] ?? '';
     $subject['visible'] = $_POST['visible'] ?? '';
 
-//    $error = validate_subject($subject['menu_name'],$subject['position'],$subject['visible']);
-//
-//    if (!empty($error)){
-//        return $error;
-//    }
-$result = update_subjects($subject);
-    redirect_to(url_for('/staff/subjects/index.php'));
 
+$result = update_subjects($subject);
+if ($result === true ){
+    redirect_to(url_for('/staff/subjects/index.php'));
+}else{
+    $errors = $result;
+    echo var_dump($errors);
+}
 
 }else{
     $subject = find_all_subjects_by_id($selected_id);

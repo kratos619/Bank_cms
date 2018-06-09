@@ -26,22 +26,55 @@ function find_all_subjects_by_id($id){
     return $subject;
 }
 
-function insert_subjects($menu_name,$visible,$position){
+function validate_subject($subject) {
+
+        $errors = [];
+
+        // menu_name
+        if(is_blank($subject['menu_name'])) {
+            $errors[] = "Name cannot be blank.";
+        }
+        if(!has_length($subject['menu_name'], ['min' => 2, 'max' => 255])) {
+            $errors[] = "Name must be between 2 and 255 characters.";
+        }
+
+        // position
+        // Make sure we are working with an integer
+        $postion_int = (int) $subject['position'];
+        if($postion_int <= 0) {
+            $errors[] = "Position must be greater than zero.";
+        }
+        if($postion_int > 999) {
+            $errors[] = "Position must be less than 999.";
+        }
+
+        // visible
+        // Make sure we are working with a string
+        $visible_str = (string) $subject['visible'];
+        if(!has_inclusion_of($visible_str, ["0","1"])) {
+            $errors[] = "Visible must be true or false.";
+        }
+
+        return $errors;
+    }
+
+function insert_subjects($subject){
 
     global $db;
 
-    $error = validate_subject($menu_name,$visible,$position);
+    $errors = validate_subject($subject);
 
-    if (!empty($error)){
-        return $error;
+    if (!empty($errors)){
+        return $errors;
     }
+
 
     $sql = "insert into subjetcs ";
     $sql .= "(menu_name,position ,visible) ";
     $sql .= "values (";
-    $sql .= "'".$menu_name."',";
-    $sql .= "'".$visible."',";
-    $sql .= "'".$position."'";
+    $sql .= "'". $subject['menu_name'] ."',";
+    $sql .= "'". $subject['position'] ."',";
+    $sql .= "'". $subject['visible'] ."'";
     $sql .= ")";
 
     $result = mysqli_query($db , $sql);
@@ -60,6 +93,11 @@ function update_subjects($subject)
 {
     global $db;
 
+    $error = validate_subject($subject);
+
+    if (!empty($error)){
+        return $error;
+    }
 
     $sql = "update subjetcs set ";
     $sql .= "menu_name='" . $subject['menu_name'] . "', ";
