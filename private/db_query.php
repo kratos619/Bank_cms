@@ -29,6 +29,13 @@ function find_all_subjects_by_id($id){
 function insert_subjects($menu_name,$visible,$position){
 
     global $db;
+
+    $error = validate_subject($menu_name,$visible,$position);
+
+    if (!empty($error)){
+        return $error;
+    }
+
     $sql = "insert into subjetcs ";
     $sql .= "(menu_name,position ,visible) ";
     $sql .= "values (";
@@ -43,6 +50,30 @@ function insert_subjects($menu_name,$visible,$position){
        // redirect_to(url_for('/staff/subjects/show.php?id='.$new_id));
        return true;
     }else{
+        echo mysqli_errno($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function update_subjects($subject)
+{
+    global $db;
+
+
+    $sql = "update subjetcs set ";
+    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
+    $sql .= "position='" . $subject['position'] . "', ";
+    $sql .= "visible='" . $subject['visible'] . "' ";
+    $sql .= "where id='" . $subject['id']  . "' ";
+    $sql .= "limit 1";
+    // echo  $sql;
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+        //   redirect_to(url_for('/staff/subjects/index.php'));
+        return true;
+    } else {
+        //if update fail
         echo mysqli_errno($db);
         db_disconnect($db);
         exit;

@@ -7,6 +7,7 @@ require_once ('../../../private/initialize.php');
  * Time: 08:30
  */
 if(request_is_post()){
+    $subject = [];
     $menu_name = $_POST['menu_name'];
     $visible = $_POST['visible'];
     $position= $_POST['position'];

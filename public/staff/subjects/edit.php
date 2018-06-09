@@ -41,27 +41,21 @@ if (!isset($_GET['id'])) {
 
 if(request_is_post()){
     //handle value send my bew php
+    $subject = [];
+    $subject['id'] = $selected_id;
     $subject['menu_name'] = $_POST['menu_name'] ?? '';
     $subject['position'] = $_POST['position'] ?? '';
     $subject['visible'] = $_POST['visible'] ?? '';
 
-    $sql = "update subjetcs set ";
-    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
-    $sql .= "position='" . $subject['position'] . "', ";
-    $sql .= "visible='" . $subject['visible'] . "' ";
-    $sql .= "where id='" . $selected_id . "' ";
-    $sql .= "limit 1";
-   // echo  $sql;
-$result = mysqli_query($db,$sql);
-if($result){
-redirect_to(url_for('/staff/subjects/index.php'));
+//    $error = validate_subject($subject['menu_name'],$subject['position'],$subject['visible']);
+//
+//    if (!empty($error)){
+//        return $error;
+//    }
+$result = update_subjects($subject);
+    redirect_to(url_for('/staff/subjects/index.php'));
 
-}else{
-    //if update fail
-echo mysqli_errno($db);
-db_disconnect($db);
-exit;
-}
+
 }else{
     $subject = find_all_subjects_by_id($selected_id);
     $subject_sets = find_all_subjects();
