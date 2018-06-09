@@ -19,11 +19,11 @@ if(request_is_post()){
     $sql = "insert into pages ";
     $sql .= "(subject_id,menu_name,position ,visible, content) ";
     $sql .= "values (";
-    $sql .= "'".h($subject_id['subject_id'])."',";
-    $sql .= "'".h($menu_name['menu_name'])."',";
-    $sql .= "'".h($position['position'] )."',";
-    $sql .= "'".h($visible['visible'])."',";
-    $sql .= "'".h($content['content'])."'";
+    $sql .= "'".db_escape($db,$subject_id['subject_id'])."',";
+    $sql .= "'".db_escape($db,$menu_name['menu_name'])."',";
+    $sql .= "'".db_escape($db,$position['position'] )."',";
+    $sql .= "'".db_escape($db,$visible['visible'])."',";
+    $sql .= "'".db_escape($db,$content['content'])."'";
     $sql .= ")";
     echo $sql;
     $result = mysqli_query($db , $sql);

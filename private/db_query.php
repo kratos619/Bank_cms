@@ -18,7 +18,7 @@ return $result;
 function find_all_subjects_by_id($id){
     global $db;
     $sql = "SELECT * FROM subjetcs ";
-    $sql .= "where id= '". $id . "' ";
+    $sql .= "where id= '". db_escape($db,$id). "' ";
     $result = mysqli_query($db,$sql);
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -67,14 +67,12 @@ function insert_subjects($subject){
     if (!empty($errors)){
         return $errors;
     }
-
-
     $sql = "insert into subjetcs ";
     $sql .= "(menu_name,position ,visible) ";
     $sql .= "values (";
-    $sql .= "'". $subject['menu_name'] ."',";
-    $sql .= "'". $subject['position'] ."',";
-    $sql .= "'". $subject['visible'] ."'";
+    $sql .= "'". db_escape($db,$subject['menu_name']) ."',";
+    $sql .= "'". db_escape($db,$subject['position']) ."',";
+    $sql .= "'". db_escape($db,$subject['visible']) ."'";
     $sql .= ")";
 
     $result = mysqli_query($db , $sql);
@@ -100,10 +98,10 @@ function update_subjects($subject)
     }
 
     $sql = "update subjetcs set ";
-    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
-    $sql .= "position='" . $subject['position'] . "', ";
-    $sql .= "visible='" . $subject['visible'] . "' ";
-    $sql .= "where id='" . $subject['id']  . "' ";
+    $sql .= "menu_name='" . db_escape($db,$subject['menu_name']) . "', ";
+    $sql .= "position='" . db_escape($db,$subject['position']) . "', ";
+    $sql .= "visible='" . db_escape($db,$subject['visible']) . "' ";
+    $sql .= "where id='" . db_escape($db,$subject['id'])  . "' ";
     $sql .= "limit 1";
     // echo  $sql;
     $result = mysqli_query($db, $sql);
@@ -153,7 +151,7 @@ function find_all_pages(){
 function find_pages_by_id($id){
     global $db;
     $sql = "SELECT * FROM pages ";
-    $sql .= "where id= '". $id . "' ";
+    $sql .= "where id= '". db_escape($db,$id) . "' ";
     $result = mysqli_query($db,$sql);
     confirm_result_set($result);
     $pages = mysqli_fetch_assoc($result);
@@ -164,7 +162,7 @@ function find_pages_by_id($id){
 function delete_pages($selected_id){
     global $db;
     $sql = "delete from pages ";
-    $sql.= "where id= '". $selected_id . "'";
+    $sql.= "where id= '". db_escape($db,$selected_id) . "'";
     $sql.= "limit 1";
 
     $result = mysqli_query($db,$sql);

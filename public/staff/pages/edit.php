@@ -50,12 +50,12 @@ if (!isset($_GET['id'])) {
 $selected_content ['content'] = $_POST['content'];
 
         $sql = "update pages set ";
-        $sql .= "subject_id='" . $selected_subject_id['subject_id'] . "', ";
-        $sql .= "menu_name='" . $selected_menu['menu_name'] . "', ";
-        $sql .= "position='" .  $selected_position['position']. "', ";
-        $sql .= "visible='" . $selected_visibility['visible'] . "' ,";
-        $sql .= "content='" . $selected_content['content'] . "' ";
-        $sql .= " where id='" . $selected_id . "' ";
+        $sql .= "subject_id='" . db_escape($db,$selected_subject_id['subject_id']) . "', ";
+        $sql .= "menu_name='" . db_escape($db,$selected_menu['menu_name']) . "', ";
+        $sql .= "position='" .  db_escape($db,$selected_position['position']). "', ";
+        $sql .= "visible='" . db_escape($db,$selected_visibility['visible']) . "' ,";
+        $sql .= "content='" . db_escape($db,$selected_content['content']) . "' ";
+        $sql .= " where id='" .db_escape($db, $selected_id). "' ";
         $sql .= "limit 1";
 
         $result = mysqli_query($db , $sql);

@@ -34,7 +34,7 @@ require(SHARED_PATH .'/staff-header.php');
         $subject = find_all_subjects_by_id($selected_id);
 if (request_is_post()){
 $sql = "delete from subjetcs";
-$sql .= " where id= '".$selected_id . "'";
+$sql .= " where id= '".db_escape($db,$selected_id) . "'";
 $sql .= "limit 1";
 $result = mysqli_query($db,$sql);
 if($result){
