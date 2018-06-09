@@ -43,3 +43,9 @@ mysqli_free_result($result_set);
 5. Close database connection
 mysqli_close($connection);
 
+IMPORTANT 
+sql Injection 
+
+function db_escape($connection , $string){
+    return mysqli_real_escape_string($connection,$string);
+}
